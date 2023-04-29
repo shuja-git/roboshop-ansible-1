@@ -1,7 +1,7 @@
  - name: Install Nginx
-    ansible.builtin.yum:
-      name: nginx
-      state: installed
+   ansible.builtin.yum:
+     name: nginx
+     state: installed
 
  - name: remove directory
    ansible.builtin.file:
