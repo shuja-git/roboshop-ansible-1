@@ -1,0 +1,3 @@
+- name: Frontend Setup
+  ansible.builtin.debug:
+    msg: "Frontend Setup"
