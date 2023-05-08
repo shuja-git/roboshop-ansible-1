@@ -25,31 +25,22 @@
 #rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>"${log_file}"
 #status_check $?
 
-- name: setup Earlang Repo
-  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-- name: setup Rabbitmq Repo
-  ansible.builtin.shell: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+- name: Setup ErLang Repo
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-- name: Install rabbitmq and Erlang
+- name: Install RabbitMQ Repos
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+
+- name: Install ErLang and RabbitMQ
   ansible.builtin.yum:
     name:
       - rabbitmq-server
       - erlang
     state: installed
 
-- name: Start rabbitmq service
+- name: Start RabbitMQ Service
   ansible.builtin.systemd:
     name: rabbitmq-server
     state: started
-    enabled: true
-
-- name: Add application user
-  community.rabbitmq.rabbitmq_user:
-    user: roboshop
-    password: roboshop123
-    vhost: /
-    configure_priv: .*
-    read_priv: .*
-    write_priv: .*
-    state: present
+    enabled: yes
