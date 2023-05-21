@@ -34,8 +34,8 @@
        ansible.builtin.shell: mongo --host mongodb-dev.shujadevops.online </app/schema/${component}.js
 
 - name: MySQL Schema setup
-    when: schema_type == "mysql"
-    block:
+  when: schema_type == "mysql"
+  block:
       - name: installing mysql client
         ansible.builtin.yum:
           name: mysql
