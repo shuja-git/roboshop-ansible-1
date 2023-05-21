@@ -15,7 +15,7 @@
 - name: Install nodejs
   ansible.builtin.yum:
     name: nodejs
-    status: installed
+    state: installed
 
 - name: app_pre-requsite
   ansible.builtin.import_tasks:
