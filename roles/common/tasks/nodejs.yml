@@ -28,3 +28,8 @@
 - name: schema_setup
   ansible.builtin.import_tasks:
     file: schema_setup.yml
+  when: schema_setup is undefined
+
+- name: systemd-setup
+  ansible.builtin.import_tasks:
+    file: systemd-setup.yml
