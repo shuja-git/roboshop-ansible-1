@@ -1,14 +1,3 @@
-
-#app_prereq_setup
-#
-#print_head "Installing Nodejs dependencies"
-#npm install &>>${log_file}
-#status_check $?
-#
-#
-#schema_setup
-#systemd_setup
-
 - name: configure nodejs repo
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
